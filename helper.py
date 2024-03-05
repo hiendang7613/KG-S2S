@@ -86,7 +86,7 @@ def get_next_token_dict(configs, ent_token_ids_in_trie, prefix_trie):
             cur_tokens = list(set(cur_tokens))
             rows.extend([pos_id] * len(cur_tokens))
             cols.extend(cur_tokens)
-        sparse_mask = sp.coo_matrix(([1] * len(rows), (rows, cols)), shape=(len(input_ids), configs.vocab_size), dtype=np.long)
+        sparse_mask = sp.coo_matrix(([1] * len(rows), (rows, cols)), shape=(len(input_ids), configs.vocab_size), dtype=np.longlong)
         neg_candidate_mask.append(sparse_mask)
     return neg_candidate_mask, next_token_dict
 
