@@ -13,7 +13,10 @@ import pygtrie
 
 
 def get_num(dataset_path, dataset, mode='entity'):  # mode: {entity, relation}
-    return int(open(os.path.join(dataset_path, dataset, mode + '2id.txt')).readline().strip())
+    file_path = os.path.join(dataset_path, dataset, mode + '2id.txt')
+    with open(file_path, "r", encoding="utf-8") as file:
+        first_line = file.readline().strip()
+    return int(first_line)
 
 
 def read(configs, dataset_path, dataset, filename):

@@ -30,7 +30,9 @@ class Processor:
     def read_json_file(self, filename, in_folder=None, dataset=None):
         in_folder = self.in_folder if in_folder is None else in_folder
         dataset = self.dataset if dataset is None else dataset
-        return json.load(open(os.path.join(in_folder, dataset, filename)))
+        file_path = os.path.join(in_folder, dataset, filename)
+        with open(file_path, encoding="utf-8") as file:
+            return json.load(file)
 
     def write_file(self, filename, out_folder=None, dataset=None, sort_key=None, func=lambda x: x):
         out_folder = self.out_folder if out_folder is None else out_folder
